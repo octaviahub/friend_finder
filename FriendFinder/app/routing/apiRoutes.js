@@ -1,11 +1,18 @@
-const friendsData = require("../data/friends");
-const resultsData = require("../data/resultsData");
+const allFriends = require("../data/friends");
+const incResults = require("../data/results");
 
 
-app.get("/api/friendsData", function(req, res) {
-    res.json(friendsData);
+app.get("/api/friends", function(req, res) {
+    res.json(friends);
   });
 
-  app.get("/api/resultsData", function(req, res) {
-    res.json(resultsData);
+
+
+  app.post("/api/friends", function(req, res) {
+
+  	if (allFriends === incResults) {
+  		friends.push(req.body);
+  		res.json(true);
+  	}
+    res.json(results);
   });
