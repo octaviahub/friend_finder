@@ -1,0 +1,26 @@
+
+.container {
+	    padding-right: 15px;
+    	padding-left: 15px;
+    	border-radius: 6px;
+}
+}
+#jumbo-home {
+	box-sizing: border-box;
+	padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #eee;
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+
+ }
+
+ h2, h3{
+ 	 font-weight: 500;
+ }
