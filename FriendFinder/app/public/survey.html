@@ -2,25 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> Friend Finder using Express</title>
+  <title> Friend Finder Using Express</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class= "container">
 	
-    
   <h1>Friend Finder Survey Questions</h1>
 
-	<form>
-  <div class="form-group">
+	<!-- <form> -->
+  <div class="form-group"> 
     <h2>About You</h2>
-    <label for="formGroupExampleInput">Name (Required)</label>    
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+    <label for="formGroupExampleInput" id="name-input">Name (Required)</label>    
+    <input type="text" class="form-control" id="formGroupExampleInput">
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput2">"Link to Photo Image (Required)</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+    <label for="formGroupExampleInput2" id="photo-link">Link to Photo Image (Required)</label>
+  
+    <input type="text" class="form-control" id="formGroupExampleInput2">
+<!--   </div>
+</form> -->
+  <hr>
+  <h2>
+   <strong>Question 1</strong>
+  </h2>
+  <h4>Your mind is always buzzing</h4>
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Select an Option
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <option value></option>
+      <option value="1."> 1 (Strongly Disagree)</option>
+      <option value="2."> 2 </option>
+      <option value="3."> 3 </option>
+      <option value="4."> 4 </option>
+      <option value="5."> 5 (Strongly Agree)</option>
   </div>
-</form>
+</div>
+
+
+    <!-- <select class="chosen-select" id="q1" style="display: none;">
+      <option value></option>
+      <option value="1"> 1 (Strongly Disagree)</option>
+      <option value="2"> 2 </option>
+      <option value="3"> 3 </option>
+      <option value="4"> 4 </option>
+      <option value="5"> 5 (Strongly Agree)</option>
+    </select>  
+  <div class="chosen-container chosen-container-single" style="width: 155px;" title id="q1_chosen">
+    <a class="chosen-single chosen-default">
+      <span>Select an Option</span>
+      <div>
+        <b></b>
+      </div>
+    </a>
+  <div class="chosen-drop">
+    <div class="chosen-search"></div>
+    <ul class="chosen-results"></ul>
+  </div>
+</div> -->
+
+
+
+
+
+
