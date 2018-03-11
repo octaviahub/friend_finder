@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title> Friend Finder Using Express</title>
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 </head>
+
 <body>
 	<div class= "container">
 	
@@ -27,34 +29,75 @@
 <!--   </div>
 </form> -->
   <hr>
-  <h2>
+  <h3>
    <strong>Question 1</strong>
-  </h2>
-  <h4>Your mind is always buzzing</h4>
+  </h3>
+  <h4>Traveling liberates you</h4>
 
-    <div class="dropdown">
+  <!--   <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Select an Option
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown button
-  </button>
+  </button> -->
   <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="#">Action</a>
     <a class="dropdown-item" href="#">Another action</a>
     <a class="dropdown-item" href="#">Something else here</a>
-  </div> -->
-</div>
+  </div>
+</div> -->
+<select class="chosen-select" id="q1" style="display: none;">
     <option value></option>
       <option value="1."> 1 (Strongly Disagree)</option>
       <option value="2."> 2 </option>
       <option value="3."> 3 </option>
       <option value="4."> 4 </option>
       <option value="5."> 5 (Strongly Agree)</option>
+</select>
+<div class="chosen-container chosen-container-single" style="width: 154px;" title id="q10_chosen">
+  <a class="chosen-single chosen-defualt">
+    <span> Select an Option</span>
+    <div>
+      <b></b>
+    </div>
+  </a>
+  <div class="chosen-drop">
+    <div class="chosen-search">
+      <input type="text" autocomplete="off">
+    </div>
+    <ul class="chosen-results"></ul>
+
     </div>
   </div>
-</div>
+
+  <br>
+  <br>
+
+
+<!-- Submit Button  -->
+
+<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
+    <i class="fa fa-check-circle" aria-hidden="true">
+      ::before
+    </i>
+    "Submit"
+</button>
+  
+  <hr>
+  <footer class="footer">
+    <div class="container">
+      ::before 
+      <p>
+        <a href="/api/friends">API Friends List</a>
+        " | "
+        <a href="https://github.com/octaviahub/friend_finder.git">GitHub Repo</a>
+      </p>
+      ::after 
+    </div>
+
+<!-- Modal  -->
 
 <div id="results-modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -73,29 +116,29 @@
   </div>
 </div>
 
-
 <script type="text/javascript">
-const config = { 
-  ".chosen-select": {}
-  ".chosen-select-deselct": {
-    allow_single_deselect: true
+  
+  const config = { 
+    ".chosen-select": {}
+    ".chosen-select-deselct": {
+      allow_single_deselect: true
+    },
+    ".chosen-select-no-results": {
+     no_results_text: "Oops, nothing found!"
+    },
+    ".chosen-select-width": {
+      width: "95%"
+    }
   },
-  ".chosen-select-no-results": {
-    no_results_text: "Oops, nothing found!"
-  },
-  ".chosen-select-width": {
-    width: "95%"
-  }
-},
   
   for (const selector in config) {
-    $(selector).chosen(config[selector]);
-  }
+      $(selector).chosen(config[selector]);
+    }
 
   //Capturing form inputs 
 
   $(#submit).on("click", function (event) {
-    event.preventDefault();
+     event.preventDefault();
 
     // form validation 
     function validateForm() {
