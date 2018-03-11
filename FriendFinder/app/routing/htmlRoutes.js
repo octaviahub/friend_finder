@@ -1,4 +1,4 @@
-//DEPENDENCIES
+b//DEPENDENCIES
 const path = require("path");
 
 module.exports = function(app) {

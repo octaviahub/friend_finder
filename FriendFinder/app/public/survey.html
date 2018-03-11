@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -37,6 +37,15 @@
       Select an Option
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div> -->
+</div>
     <option value></option>
       <option value="1."> 1 (Strongly Disagree)</option>
       <option value="2."> 2 </option>
@@ -45,6 +54,79 @@
       <option value="5."> 5 (Strongly Agree)</option>
   </div>
 </div>
+</div>
+
+<script type="text/javascript">
+const config = { 
+  ".chosen-select": {}
+  ".chosen-select-deselct": {
+    allow_single_deselect: true
+  },
+  ".chosen-select-no-results": {
+    no_results_text: "Oops, nothing found!"
+  },
+  ".chosen-select-width": {
+    width: "95%"
+  }
+},
+  
+  for (const selector in config) {
+    $(selector).chosen(config[selector]);
+  }
+
+  //Capturing form inputs 
+
+  $(#submit).on("click", function (event) {
+    event.preventDefault();
+
+    // form validation 
+    function validateForm() {
+      const isValid = true;
+      $(".form-control").each(function() {
+        if($(this).val() === "") {
+          isValid = false;
+        }
+        });
+        $(".chosen-select").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+        return isValid;
+
+      }
+      // if all required fields are filled 
+      if (validateForm()) {
+      // Create an object for user's data
+        const userData = {
+          name: $("#name").val(),
+          photo: $("#photo").val(),
+          scores: [
+            $("#q1").val(),
+            $("#q2").val(),
+            $("#q3").val(),
+            $("#q4").val(),
+            $("#q5").val(),
+            $("#q6").val(),
+            $("#q7").val(),
+            $("#q8").val(),
+            $("#q9").val(),
+            $("#q10").val(),
+          ]
+        }
+        // Ajax post the data to friends API
+        $.post ("/api/friends", userData, function(data) {
+          // grab the result from the AJAX post so that the best match's name and photo are displayed 
+          $("#match-name").text(data.name);
+          $("#match-img").attr("src, data.photo");
+
+          // show the modal with the best match 
+          $("#results-modal").modal("toggle");
+      });
+       } else {
+          alert("Please fill out all fields before submitting!");
+    }
+  });
 
 
     <!-- <select class="chosen-select" id="q1" style="display: none;">
@@ -68,7 +150,27 @@
   </div>
 </div> -->
 
+<button type="submit" claqss="btn btn-primary btn-lg btn-block" id="submit"></button>
+<hr>
+<footer class="footer"></footer>
+::after
+</div>
 
+<!-- Modal -->
+<div id="results-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content -->
+    <div class="modal-content"></div>
+  </div>
+</div>
+<script type="text/javascript">
+  // chosen CSS
+
+  const config = {
+    
+  }
+</body>
+</html>
 
 
 
