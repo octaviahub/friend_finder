@@ -2,8 +2,6 @@ const express = require("express");
 
 const bodyParser = require("body-parser");
 
-const path = require("path");
-
 // Set up Express app
 const app = express();
 const PORT = 3000;
@@ -23,13 +21,13 @@ app.use(bodyParser.json());
 // };
   
 // Directs server to a series of "route" files.
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 
 // Starts the server to begin listening
 
-  server.listen(PORT, function() {
+  app.listen(PORT, function() {
   console.log("Server is listening on PORT: " + PORT);
 
 });
