@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 </head>
 
@@ -146,92 +147,89 @@
     <br>
     <br>
 
+ <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+     Submit</button>
 
-
-
-
-<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">
-    <i class="fa fa-check-circle" aria-hidden="true">
-      ::before
-    </i>
-    "Submit"
-</button>
-  
-  <hr>
-  <footer class="footer">
-    <div class="container">
-      
-      <p>
-        <a href="/api/friends">API Friends List</a>
-        " | "
-        <a href="https://github.com/octaviahub/friend_finder.git">GitHub Repo</a>
-      </p>
-    
-    </div>
-
-<!-- Modal  -->
-
-<div id="results-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal Content -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"></button>
-        <h2 class="modal-title">
-          <strong>Best Match</strong>
-        </h2>
+    <hr>
+    <footer class="footer">
+      <div class="container">
+        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a></p>
       </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </footer>
+
+  </div>
+
+ 
+  <div id="results-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title"><strong>Best Match</strong></h2>
+        </div>
+        <div class="modal-body">
+          <h2 id="match-name"></h2>
+          <img id="match-img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
+
     </div>
   </div>
-</div>
 
-<script type="text/javascript">
-  
-  const config = { 
-    ".chosen-select": {}
-    ".chosen-select-deselct": {
-      allow_single_deselect: true
-    },
-    ".chosen-select-no-results": {
-     no_results_text: "Oops, nothing found!"
-    },
-    ".chosen-select-width": {
-      width: "95%"
-    }
-  },
-  
-  for (const selector in config) {
+  <script type="text/javascript">
+    // Chosen CSS
+    var config = {
+      ".chosen-select": {},
+      ".chosen-select-deselect": {
+        allow_single_deselect: true
+      },
+      ".chosen-select-no-single": {
+        disable_search_threshold: 10
+      },
+      ".chosen-select-no-results": {
+        no_results_text: "Oops, nothing found!"
+      },
+      ".chosen-select-width": {
+        width: "95%"
+      }
+    };
+
+    for (var selector in config) {
       $(selector).chosen(config[selector]);
     }
 
-  //Capturing form inputs 
+    // Capture the form inputs
+    $("#submit").on("click", function(event) {
+      event.preventDefault();
 
-  $(#submit).on("click", function (event) {
-     event.preventDefault();
-
-    // form validation 
-    function validateForm() {
-      const isValid = true;
-      $(".form-control").each(function() {
-        if($(this).val() === "") {
-          isValid = false;
-        }
+      // Form validation
+      function validateForm() {
+        var isValid = true;
+        $(".form-control").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
         });
+
         $(".chosen-select").each(function() {
+
           if ($(this).val() === "") {
             isValid = false;
           }
         });
         return isValid;
-
       }
-      // if all required fields are filled 
+
+      // If all required fields are filled
       if (validateForm()) {
-      // Create an object for user's data
-        const userData = {
+       
+        var userData = {
           name: $("#name").val(),
           photo: $("#photo").val(),
           scores: [
@@ -244,28 +242,31 @@
             $("#q7").val(),
             $("#q8").val(),
             $("#q9").val(),
-            $("#q10").val(),
+            $("#q10").val()
           ]
-        }
-        // Ajax post the data to friends API
-        $.post ("/api/friends", userData, function(data) {
-          // grab the result from the AJAX post so that the best match's name and photo are displayed 
+        };
+
+        // AJAX post the data to the friends API.
+        $.post("/api/friends", userData, function(data) {
+
+          
           $("#match-name").text(data.name);
-          $("#match-img").attr("src, data.photo");
+          $("#match-img").attr("src", data.photo);
 
-          // show the modal with the best match 
+          // Show the modal with the best match
           $("#results-modal").modal("toggle");
-      });
-       } else {
-          alert("Please fill out all fields before submitting!");
-    }
-  });
-</script>
-<script id="wappalyzer" src="chrome-extension://gppongmhjkpfnbhagpmjfkannfbllamg/js/inject.js"></script>
 
+        });
+      } else {
+        alert("Please fill out all fields before submitting!");
+      }
+    });
+  </script>
 
 </body>
+
 </html>
+
     <!-- <select class="chosen-select" id="q1" style="display: none;">
       <option value></option>
       <option value="1"> 1 (Strongly Disagree)</option>
