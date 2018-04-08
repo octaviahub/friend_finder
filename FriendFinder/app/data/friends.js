@@ -1,8 +1,8 @@
 
 
 {
-  "name":"Robert",
-  "photo":"",
+  "name":"Robert Lawrey",
+  "photo":"img2.jpg",
   "scores":[
       3,
       1,
@@ -17,8 +17,8 @@
     ]
 }
 {
-  "name":"Angie",
-  "photo":"",
+  "name":"Angie Manzo",
+  "photo":"img5.jpg",
   "scores":[
       2,
       2,
@@ -33,8 +33,8 @@
     ]
 }
 {
-  "name":"Meagan",
-  "photo":"",
+  "name":"Meagan Cruz",
+  "photo":"img6.jpg",
   "scores":[
       3,
       3,
@@ -50,8 +50,8 @@
 }
 {
 
-  "name":"Thomas",
-  "photo":"",
+  "name":"Thomas Smith",
+  "photo":"img4.jpg",
   "scores":[
       3,
       3,
@@ -67,8 +67,8 @@
 }
 {
 
-  "name":"Marley",
-  "photo":"",
+  "name":"Marley Sandford",
+  "photo":"img3.jpg",
   "scores":[
       1,
       1,
